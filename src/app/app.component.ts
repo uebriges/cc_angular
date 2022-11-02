@@ -10,19 +10,21 @@ import { IEnsemblAssemblies, IPackageJson } from './types';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  ensemblAssemblies: IEnsemblAssemblies | undefined;
+  ensemblAssemblies: IEnsemblAssemblies[] | undefined;
   packageJson: IPackageJson | undefined;
 
-  constructor(private dbService: DBService, private fileService: FileService) {}
+  constructor(private fileService: FileService, private dbService: DBService) {}
 
   getDataFromDB() {
     this.dbService.getDataFromDB().subscribe(
-      (data: IEnsemblAssemblies[]) =>
-        (this.ensemblAssemblies = {
-          common_name: data[0].common_name,
-          ensembl_url: data[0].ensembl_url,
-          example_chromosome: data[0].example_chromosome,
-        })
+      (data: IEnsemblAssemblies[]) => (this.ensemblAssemblies = data)
+      //   [
+      //   {
+      //     common_name: data[0].common_name,
+      //     ensembl_url: data[0].ensembl_url,
+      //     example_chromosome: data[0].example_chromosome,
+      //   },
+      // ]
     );
   }
 
@@ -48,5 +50,6 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.getDataFromDB();
+    this.getDataFromFile();
   }
 }

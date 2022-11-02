@@ -1,5 +1,8 @@
 <div class="main-area">
-  <label for="first">{{ ensemblAssemblies?.common_name }}</label>
+  <!-- <label for="first">{{ ensemblAssemblies?.common_name }}</label> -->
   <button (click)="logEnsembleAssemblies()">Retrieve ensembl assemblies</button>
+  <div *ngFor="let assembly of ensemblAssemblies">
+    {{ assembly.common_name }}
+  </div>
   <button (click)="logPackageJson()">Retrieve package json</button>
 </div>
