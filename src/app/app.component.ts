@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { DBService } from './services/db-service.service';
-import { FileService } from './services/file-service.service';
+import { DBService } from './services/db.service';
+import { FileService } from './services/file.service';
 import { IEnsemblAssemblies, IPackageJson } from './types';
 
 @Component({
@@ -15,19 +15,20 @@ export class AppComponent {
 
   constructor(private fileService: FileService, private dbService: DBService) {}
 
+  // Retrieve data from DB
   getDataFromDB() {
     this.dbService.getDataFromDB().subscribe(
-      (data: IEnsemblAssemblies[]) => (this.ensemblAssemblies = data)
-      //   [
-      //   {
-      //     common_name: data[0].common_name,
-      //     ensembl_url: data[0].ensembl_url,
-      //     example_chromosome: data[0].example_chromosome,
-      //   },
-      // ]
+      (data: IEnsemblAssemblies[]) =>
+        (this.ensemblAssemblies = data.filter(
+          (assembly: IEnsemblAssemblies) => {
+            return assembly.common_name !== '' && assembly.common_name !== null;
+          }
+        ))
     );
+    this.packageJson = undefined;
   }
 
+  // Retrieve data from file
   getDataFromFile() {
     this.fileService.getDataFromFile().subscribe(
       (data: IPackageJson) =>
@@ -38,18 +39,6 @@ export class AppComponent {
           type: data.type,
         })
     );
-  }
-
-  logEnsembleAssemblies() {
-    console.log('Log: ', this.ensemblAssemblies);
-  }
-
-  logPackageJson() {
-    console.log('Log: ', this.packageJson);
-  }
-
-  ngOnInit(): void {
-    this.getDataFromDB();
-    this.getDataFromFile();
+    this.ensemblAssemblies = undefined;
   }
 }

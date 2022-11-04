@@ -1,10 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { IEnsemblAssemblies } from '../types';
 
+// Retrieving data of a public postgres DB
 @Injectable()
 export class DBService {
-  dbRestEndPointURL = 'http://localhost:3100/getDataFromDB';
+  dbRestEndPointURL = environment.readFromDBService;
   constructor(private http: HttpClient) {}
 
   getDataFromDB() {

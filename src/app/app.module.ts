@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DBService } from './services/db-service.service';
-import { FileService } from './services/file-service.service';
+import { DBService } from './services/db.service';
+import { FileService } from './services/file.service';
 
 @NgModule({
   declarations: [AppComponent],

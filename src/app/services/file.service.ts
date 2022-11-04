@@ -1,10 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { IPackageJson } from '../types';
 
+// Retrieving parts of package.json file on the server
 @Injectable()
 export class FileService {
-  fileRestEndpointURL = 'http://localhost:3100/readFileData';
+  fileRestEndpointURL = environment.readFromFileService;
   constructor(private http: HttpClient) {}
 
   getDataFromFile() {

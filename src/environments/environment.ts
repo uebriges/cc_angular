@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  readFromDBService: 'http://localhost:3100/getDataFromDB',
+  readFromFileService: 'http://localhost:3100/readFileData',
 };
 
 /*
