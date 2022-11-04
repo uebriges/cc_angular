@@ -1,6 +1,6 @@
 # Angular example
 
-This example retrieves data from via a server from a REST-API as well as from a File on the server displays the content on the page
+This example retrieves data from a server (backend) via REST-API calls and displays it. The backend retrieves the data from the file system as well as from a postgres database.
 
 ## Prerequisites
 
@@ -39,4 +39,4 @@ The result is represented below the buttons
 
 - UI
 - Securing environment variables/secrets
-- Catch case if server is not available
+- Catch problems if the backend is not available
