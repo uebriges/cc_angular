@@ -16,6 +16,12 @@ yarn start
 
 ## Usage
 
+Go to
+
+```
+http://localhost:4200/
+```
+
 Click one of the following two buttons:
 
 - Retrieve data from DB
@@ -26,3 +32,4 @@ The result is represented below the buttons
 ## Necessary future improvements:
 
 - UI
+- Securing environment variables/secrets
