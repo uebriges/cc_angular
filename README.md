@@ -2,13 +2,19 @@
 
 This example retrieves data from via a server from a REST-API as well as from a File on the server displays the content on the page
 
+## Prerequisites
+
+The backend for this frontend application can be found here:
+
+[https://github.com/uebriges/cc_angular_be](https://github.com/uebriges/cc_angular_be)
+
 ## Load dependencies
 
 ```
 yarn
 ```
 
-## Start the server
+## Start the application
 
 ```
 yarn start
@@ -33,3 +39,4 @@ The result is represented below the buttons
 
 - UI
 - Securing environment variables/secrets
+- Catch case if server is not available
